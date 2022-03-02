@@ -1,0 +1,46 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <StackPanel Margin="20" Spacing="5">
+            <Button Classes="custom" Content="HI THERE!" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector=":is(Button).custom">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border 
+                    Padding="50"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Name="PART_LeftEllipse" Width="16" Height="16" Margin="0 0 5 0"></Ellipse>
+                        <ContentPresenter Content="{TemplateBinding Content}"></ContentPresenter>
+                        <Ellipse Name="PART_RightEllipse" Width="16" Height="16" Margin="5 0 0 0"></Ellipse>
+                    </StackPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector=":is(Button).custom /template/ Border">
+        <Setter Property="Background" Value="LightBlue" />
+        <Setter Property="BorderBrush" Value="Green" />
+    </Style>
+    <Style Selector=":is(Button).custom:pointerover /template/ Border">
+        <Setter Property="Background" Value="Yellow" />
+        <Setter Property="BorderBrush" Value="Magenta" />
+    </Style>
+    <Style Selector=":is(Button).custom:pointerover /template/ ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="Red" />
+    </Style>
+    <Style Selector=":is(Button).custom /template/ Ellipse#PART_LeftEllipse">
+        <Setter Property="Fill" Value="Red" />
+    </Style>
+    <Style Selector=":is(Button).custom /template/ Ellipse#PART_RightEllipse">
+        <Setter Property="Fill" Value="Green" />
+    </Style>
+    <Style Selector=":is(Button).custom:pointerover /template/ Ellipse">
+        <Setter Property="Fill" Value="Orange" />
+    </Style>
+</Styles>
